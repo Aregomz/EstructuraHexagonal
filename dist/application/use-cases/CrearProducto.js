@@ -9,24 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getConnection = exports.connectDatabase = void 0;
-// adapters/dbConfig.ts
-const promise_1 = require("mysql2/promise");
-let connection;
-const connectDatabase = () => __awaiter(void 0, void 0, void 0, function* () {
-    connection = yield (0, promise_1.createConnection)({
-        host: 'localhost',
-        user: 'root',
-        password: 'ArellunasM13',
-        database: 'hexagonal',
-    });
-    console.log('Conexión a la base de datos establecida con éxito');
-});
-exports.connectDatabase = connectDatabase;
-const getConnection = () => {
-    if (!connection) {
-        throw new Error('Conexión a la base de datos no establecida.');
+exports.CrearProducto = void 0;
+class CrearProducto {
+    constructor(productoRepository) {
+        this.productoRepository = productoRepository;
     }
-    return connection;
-};
-exports.getConnection = getConnection;
+    execute(producto) {
+        return __awaiter(this, void 0, void 0, function* () {
+            // Puedes agregar lógica adicional aquí antes de guardar el producto
+            yield this.productoRepository.guardarProducto(producto);
+        });
+    }
+}
+exports.CrearProducto = CrearProducto;

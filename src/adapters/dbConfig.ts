@@ -13,7 +13,6 @@ export const connectDatabase = async (): Promise<void> => {
   console.log('Conexión a la base de datos establecida con éxito');
 };
 
-
 export const getConnection = (): Connection => {
   if (!connection) {
     throw new Error('Conexión a la base de datos no establecida.');

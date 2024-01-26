@@ -9,37 +9,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// adapters/controllers/UsuarioController.ts
-const UsuarioRepository_1 = require("../repositories/UsuarioRepository");
-const CrearUsuario_1 = require("../../application/use-cases/CrearUsuario");
-const Usuario_1 = require("../../domain/entities/Usuario");
-const usuarioRepository = new UsuarioRepository_1.UsuarioRepository();
-const crearUsuarioUseCase = new CrearUsuario_1.CrearUsuario(usuarioRepository);
-class UsuarioController {
-    static obtenerUsuarios() {
+// adapters/controllers/ProductoController.ts
+const ProductoRepository_1 = require("../repositories/ProductoRepository");
+const CrearProducto_1 = require("../../application/use-cases/CrearProducto");
+const Producto_1 = require("../../domain/entities/Producto");
+const productoRepository = new ProductoRepository_1.ProductoRepository();
+const crearProductoUseCase = new CrearProducto_1.CrearProducto(productoRepository);
+class ProductoController {
+    static obtenerProductos() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const usuarios = yield usuarioRepository.obtenerUsuarios();
-                return usuarios;
+                const productos = yield productoRepository.obtenerProductos();
+                return productos;
             }
             catch (error) {
-                console.error('Error al obtener usuarios:', error);
+                console.error('Error al obtener productos:', error);
                 throw error;
             }
         });
     }
-    static crearUsuario(nombre, email) {
+    static crearProducto(nombre, precio) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // Supongamos que el ID se genera automáticamente en el constructor de Usuario
-                const nuevoUsuario = new Usuario_1.Usuario('', nombre, email); // Deja el ID en blanco para que se genere automáticamente
-                yield crearUsuarioUseCase.execute(nuevoUsuario);
+                // Supongamos que el ID se genera automáticamente en el constructor de Producto
+                const nuevoProducto = new Producto_1.Producto('', nombre, precio); // Deja el ID en blanco para que se genere automáticamente
+                yield crearProductoUseCase.execute(nuevoProducto);
             }
             catch (error) {
-                console.error('Error al crear usuario:', error);
+                console.error('Error al crear producto:', error);
                 throw error;
             }
         });
     }
 }
-exports.default = UsuarioController;
+exports.default = ProductoController;
