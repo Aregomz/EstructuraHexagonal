@@ -10,7 +10,9 @@ export const connectDatabase = async (): Promise<void> => {
     password: 'ArellunasM13',
     database: 'hexagonal',
   });
+  console.log('Conexión a la base de datos establecida con éxito');
 };
+
 
 export const getConnection = (): Connection => {
   if (!connection) {
